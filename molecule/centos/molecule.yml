@@ -20,8 +20,6 @@ provisioner:
       jinja2_extensions: jinja2.ext.do
       gather_timeout: 30
       timeout: 30
-    ssh_connection:
-      pipelining: true
   inventory:
     group_vars:
       all:
