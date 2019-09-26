@@ -1,0 +1,14 @@
+---
+
+# Describe the default variables while documenting them.
+# Eg.
+
+# description: the default chrony server pool region
+# select your optimal region on https://www.ntppool.org/zone/@
+# type: string
+chrony_pool_region: us
+
+# description: chrony time server list
+# overrules chrony_pool_region when not empty
+# type: list
+chrony_time_servers: []

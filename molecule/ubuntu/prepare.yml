@@ -1,0 +1,15 @@
+---
+
+- hosts: all
+
+  tasks:
+    - name: Install ntp to test removal
+      apt:
+        name: ntp
+        state: present
+
+    - name: Start ntp service
+      service:
+        name: ntp
+        state: started
+        enabled: yes

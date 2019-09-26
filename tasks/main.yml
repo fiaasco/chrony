@@ -1,0 +1,16 @@
+---
+
+- name: Include OS family specific vars
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Remove ntp when detected
+  include_tasks: "remove-ntp.yml"
+
+- name: Install chrony
+  include_tasks: "install-{{ ansible_os_family }}.yml"
+
+- name: Configure chrony
+  template:
+    src: "chrony.conf-{{ ansible_os_family }}.j2"
+    dest: "{{ chrony_config_file }}"
+  notify: restart chrony

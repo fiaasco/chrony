@@ -1,0 +1,7 @@
+---
+
+- name: install chrony package
+  apt:
+    name: chrony
+    state: present
+  notify: restart chrony

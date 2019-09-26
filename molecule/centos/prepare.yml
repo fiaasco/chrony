@@ -1,0 +1,15 @@
+---
+
+- hosts: all
+
+  tasks:
+    - name: Install ntp to test removal
+      yum:
+        name: ntp
+        state: present
+
+    - name: Start ntp service
+      service:
+        name: ntpd
+        state: started
+        enabled: yes

@@ -1,0 +1,12 @@
+---
+# description: chrony configuration file
+# type: string
+chrony_config_file: /etc/chrony/chrony.conf
+
+# description: chrony service name
+# type: string
+chrony_service: chrony
+
+# description: legacy ntp service name
+# type: string
+ntp_service: ntp

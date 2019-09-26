@@ -1,0 +1,31 @@
+---
+
+- name: check for service_facts
+  service_facts:
+  register: services
+
+- name: Stop and remove legacy ntp service
+  service:
+    name: "{{ ntp_service }}"
+    state: stopped
+    enabled: no
+  when:
+    services.ansible_facts.services[ntp_service] is defined
+
+- name: Remove ntp on Debian 9+
+  apt:
+    name: ntp
+    state: absent
+  when:
+    ansible_os_family == "Debian"
+    and ansible_lsb.major_release is version('9', '>=')
+    or ansible_distribution == "Ubuntu"
+    and ansible_lsb.major_release is version('16.04', '>=')
+
+- name: Remove ntp on RedHat 9+
+  yum:
+    name: ntp
+    state: absent
+  when:
+    ansible_os_family == "RedHat"
+    and ansible_lsb.major_release is version('7', '>=')
