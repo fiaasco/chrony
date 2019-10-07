@@ -12,6 +12,9 @@ platforms:
     image: centos:7
     command: /sbin/init
     privileged: true
+    cap_add:
+      - SYS_TIME
+      - SYS_RESOURCE
 provisioner:
   name: ansible
   config_options:
