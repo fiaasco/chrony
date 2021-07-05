@@ -1,3 +1,7 @@
 ansible>=2.9.0,<2.11.0
-docker
-pytest-testinfra
+molecule
+molecule-docker
+testinfra
+ansible-lint
+yamllint
+flake8
