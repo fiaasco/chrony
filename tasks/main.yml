@@ -13,4 +13,7 @@
   template:
     src: "chrony.conf-{{ ansible_os_family }}.j2"
     dest: "{{ chrony_config_file }}"
+    owner: root
+    group: root
+    mode: "0644"
   notify: restart chrony

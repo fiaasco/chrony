@@ -2,6 +2,8 @@
 galaxy_info:
   author: Dieter Verhelst
   description: Chrony role - Time synchronisation client
+  role_name: chrony
+  namespace: fiaasco
 
   license: MIT
 

@@ -5,8 +5,11 @@ driver:
   name: docker
 scenario:
   name: ubuntu
-lint:
-  name: yamllint
+lint: |
+  set -e
+  yamllint .
+  ansible-lint
+  flake8
 platforms:
   - name: chrony-ubuntu-bionic
     image: ubuntu:bionic
@@ -25,7 +28,7 @@ provisioner:
       gather_timeout: 30
       timeout: 30
     ssh_connection:
-      pipelining: true
+      pipelining: false
   inventory:
     group_vars:
       all:
@@ -35,9 +38,5 @@ provisioner:
           - server1.molecule
           - server2.molecule
           - server3.molecule
-  lint:
-    name: ansible-lint
 verifier:
   name: testinfra
-  lint:
-    name: flake8
